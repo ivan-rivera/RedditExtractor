@@ -1,0 +1,76 @@
+# RedditExtractoR
+An R wrapper for Reddit API. This package can be used extract data from Reddit and construct structured datasets.
+
+## Installation
+The package can be installed directly from CRAN, using `install.packages("RedditExtractoR")`
+
+## Functions
+
+`reddit_urls` - used to extract URLs of Reddit threads of interest.
+
+Example:
+```r
+reddit_links <- reddit_urls(
+  search_terms   = "cute_cats",
+  page_threshold = 1
+)
+
+str(reddit_links)
+'data.frame':	25 obs. of  5 variables:
+ $ date        : chr  "05-02-15" "24-02-14" "03-09-13" "20-05-14" ...
+ $ num_comments: num  214 26 221 36 44 41 93 199 20 175 ...
+ $ title       : chr  "My brother's cat is insanely cute!" "flying little cute cat" "All you guys have cute cats, and I'm stuck with this derp" "All you guys have cute cats, and I'm stuck with this derp" ...
+ $ subreddit   : chr  "cats" "cats" "cats" "cats" ...
+ $ URL         : chr  "http://www.reddit.com/r/cats/comments/2uv9q5/my_brothers_cat_is_insanely_cute/?ref=search_posts" "http://www.reddit.com/r/cats/comments/1ys6gg/flying_little_cute_cat/?ref=search_posts" "http://www.reddit.com/r/cats/comments/1lnmcy/all_you_guys_have_cute_cats_and_im_stuck_with/?ref=search_posts" "http://www.reddit.com/r/cats/comments/260ymv/all_you_guys_have_cute_cats_and_im_stuck_with/?ref=search_posts" ...
+```
+
+`reddit_content` - used to extract comment attributes from a Reddit thread. Use URLs extracted from `reddit_urls`.
+
+Example:
+
+```r
+reddit_thread <- reddit_content(reddit_links$URL[1])
+str(reddit_thread)
+'data.frame':	207 obs. of  18 variables:
+ $ id              : int  1 2 3 4 5 6 7 8 9 10 ...
+ $ structure       : chr  "1" "1_1" "1_1_1" "1_1_1_1" ...
+ $ post_date       : chr  "05-02-15" "05-02-15" "05-02-15" "05-02-15" ...
+ $ comm_date       : chr  "05-02-15" "05-02-15" "05-02-15" "05-02-15" ...
+ $ num_comments    : num  214 214 214 214 214 214 214 214 214 214 ...
+ $ subreddit       : chr  "cats" "cats" "cats" "cats" ...
+ $ upvote_prop     : num  0.96 0.96 0.96 0.96 0.96 0.96 0.96 0.96 0.96 0.96 ...
+ $ post_score      : num  5443 5443 5443 5443 5443 ...
+ $ author          : chr  "mrmyhre" "mrmyhre" "mrmyhre" "mrmyhre" ...
+ $ user            : chr  "DoubleDot7" "ErrantWhimsy" "[deleted]" "[deleted]" ...
+ $ comment_score   : num  294 256 103 22 11 14 8 11 4 1 ...
+ $ controversiality: num  0 0 0 0 0 0 0 0 0 0 ...
+ $ comment         : chr  "Why does that cat have anime eyes? " "In most cats when their pupils are that big they're about to go into crazy play/kill mode. " "I found my cat soooo appealingly cute when he got these eyes, but it meant terror was nigh." "Why do they do that? All I know about is reindeer! HO HO HO! $1.25 /u/changetip" ...
+ $ title           : chr  "My brother's cat is insanely cute!" "My brother's cat is insanely cute!" "My brother's cat is insanely cute!" "My brother's cat is insanely cute!" ...
+ $ post_text       : chr  "" "" "" "" ...
+ $ link            : chr  "http://i.imgur.com/4clqUdj.jpg" "http://i.imgur.com/4clqUdj.jpg" "http://i.imgur.com/4clqUdj.jpg" "http://i.imgur.com/4clqUdj.jpg" ...
+ $ domain          : chr  "i.imgur.com" "i.imgur.com" "i.imgur.com" "i.imgur.com" ...
+ $ URL             : chr  "http://www.reddit.com/r/cats/comments/2uv9q5/my_brothers_cat_is_insanely_cute/?ref=search_posts" "http://www.reddit.com/r/cats/comments/2uv9q5/my_brothers_cat_is_insanely_cute/?ref=search_posts" "http://www.reddit.com/r/cats/comments/2uv9q5/my_brothers_cat_is_insanely_cute/?ref=search_posts" "http://www.reddit.com/r/cats/comments/2uv9q5/my_brothers_cat_is_insanely_cute/?ref=search_posts" ...
+```
+
+Functions `reddit_urls` and `reddit_content` can also be chained together using `get_reddit`
+
+`construct_graph` - used to plot Reddit structure using the `structure` variable from `reddit_content` output. Make sure that you only feed a single thread into this function.
+
+Example:
+```r
+graph_object <- construct_graph(reddit_content(reddit_thread))
+```
+
+Lastly, the `user_network` function can be used to build a user relationship network for a thread.
+
+```r
+library(dplyr)
+
+target_urls <- reddit_urls(search_terms="cats", subreddit="Art", cn_threshold=50) # isolate some URLs
+target_df <- target_urls %>% filter(num_comments==min(target_urls$num_comments)) %$% URL %>% reddit_content # get the contents of a small thread
+network_list <- target_df %>% user_network(include_author=FALSE, agg=TRUE) # extract the network
+network_list$plot # explore the plot
+```
+
+Here is what you would get:
+<center><img src="https://i.imgur.com/kwRYhN1.png"></center>

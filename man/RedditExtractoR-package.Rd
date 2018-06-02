@@ -12,11 +12,11 @@ Reddit is an online bulletin board and a social networking website where registe
 \tabular{ll}{
 Package: \tab RedditExtractoR\cr
 Type: \tab Package\cr
-Version: \tab 1.1.1\cr
+Version: \tab 2.1.0\cr
 Date: \tab 2015-06-14\cr
 License: \tab GPL-3 \cr
 }
-The package contains 3 functions, ObtainRedditURLs which extracts URLs based on a search query, reddit_content which extracts URL attributes or features, and get_reddit which servers as a wrapper for the first 2. It is however recommended to use reddit_urls and reddit_content which will help you refine your query.
+The package contains a collection of functions for extracting threads of interest and their corresponding comments, as well as functions for analysing the structure of these threads.
 }
 \author{
 Ivan Rivera
