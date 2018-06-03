@@ -13,7 +13,7 @@
 #' # load libraries
 #' library(dplyr)
 #' library(RedditExtractoR)
-#' target_urls <- reddit_urls(search_terms="cats", subreddit="Art", cn_threshold=50) # isolate some URLs
+#' target_urls <- reddit_urls(search_terms="cats", subreddit="Art", cn_threshold=50)
 #' target_df <- target_urls %>% 
 #' filter(num_comments==min(target_urls$num_comments)) %$% 
 #' URL %>% reddit_content # get the contents of a small thread
