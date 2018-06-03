@@ -24,7 +24,9 @@ User relationship network
 library(dplyr)
 library(RedditExtractoR)
 target_urls <- reddit_urls(search_terms="cats", subreddit="Art", cn_threshold=50) # isolate some URLs
-target_df <- target_urls \%>\% filter(num_comments==min(target_urls$num_comments)) \%$\% URL \%>\% reddit_content # get the contents of a small thread
+target_df <- target_urls \%>\% 
+filter(num_comments==min(target_urls$num_comments)) \%$\% 
+URL \%>\% reddit_content # get the contents of a small thread
 network_list <- target_df \%>\% user_network(include_author=FALSE, agg=TRUE) # extract the network
 network_list$plot # explore the plot
 str(network_list$df) # check out the contents
