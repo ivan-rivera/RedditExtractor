@@ -20,7 +20,7 @@
 #' network_list <- target_df %>% user_network(include_author=FALSE, agg=TRUE) # extract the network
 #' network_list$plot # explore the plot
 #' str(network_list$df) # check out the contents
-user_network <- function(thread_df, include_author=TRUE, agg=FALSE){
+user_network <- function(thread_df, include_author=TRUE, agg=FALSE, plot=FALSE){
   
   # identify sender / receiver relationships
   sender_receiver_df <- thread_df %>% 
@@ -69,10 +69,12 @@ user_network <- function(thread_df, include_author=TRUE, agg=FALSE){
   ig_object <- igraph::graph_from_data_frame(d=edge_df, vertices=node_df, directed=TRUE)
   
   # generate a plot
-  plot_object <- visNetwork::visNetwork(
-    node_df %>% rename("label"=.data$user), 
-    edge_df %>% rename("width"=.data$weight) %>% mutate(arrows="to"),
-    main="User Network")
+  if (plot) {
+    plot_object <- visNetwork::visNetwork(
+      node_df %>% rename("label"=.data$user), 
+      edge_df %>% rename("width"=.data$weight) %>% mutate(arrows="to"),
+      main="User Network")
+  }
   
   # package the outputs
   out_list <- list(
