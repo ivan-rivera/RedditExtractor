@@ -15,26 +15,26 @@
 #' @export
 
 reddit_content = function(URL,wait_time=2){
-  
+
   if(is.null(URL) | length(URL)==0 | !is.character(URL)){stop("invalid URL parameter")}
-  
-  # setting up a function for extraction of comment specific information:
+
+   # setting up a function for extraction of comment specific information:
   GetAttribute  = function(node,feature){
     Attribute   = node$data[[feature]]
     replies     = node$data$replies
     reply.nodes = if (is.list(replies)) replies$data$children else NULL
     return(list(Attribute, lapply(reply.nodes,function(x){GetAttribute(x,feature)})))  
   }
-  
-  get.structure = function(node, depth=0) {
+
+   get.structure = function(node, depth=0) {
     if(is.null(node)) {return(list())}
     filter     = is.null(node$data$author)
     replies     = node$data$replies
     reply.nodes = if (is.list(replies)) replies$data$children else NULL
     return(list(paste0(filter," ",depth), lapply(1:length(reply.nodes), function(x) get.structure(reply.nodes[[x]], paste0(depth, "_", x)))))
   }
-  
-  # setting up the data frame
+
+   # setting up the data frame
   data_extract = data.frame(id               = numeric(),
                             structure        = character(),
                             post_date        = as.Date(character()),
@@ -53,10 +53,10 @@ reddit_content = function(URL,wait_time=2){
                             link             = character(),
                             domain           = character(),
                             URL              = character())
-  
-  
-  pb = utils::txtProgressBar(min = 0, max = length(URL), style = 3)
-  
+
+
+pb = utils::txtProgressBar(min = 0, max = length(URL), style = 3)
+   
   for(i in seq(URL)){
     
     if(!grepl("^https?://(.*)",URL[i])) URL[i] = paste0("https://www.",gsub("^.*(reddit\\..*$)","\\1",URL[i]))
@@ -70,22 +70,22 @@ reddit_content = function(URL,wait_time=2){
       Sys.sleep(min(1,wait_time))
       raw_data = tryCatch(RJSONIO::fromJSON(readLines(X, warn = FALSE)),error = function(e) NULL)
     }
-    
+   
     if(is.null(raw_data)==FALSE){
       
       # extracting comment specific information:
       meta.node     = raw_data[[1]]$data$children[[1]]$data
       main.node     = raw_data[[2]]$data$children
-      
+
       if(min(length(meta.node),length(main.node))>0){
-        
+
         structure     = unlist(lapply(1:length(main.node), function(x) get.structure(main.node[[x]], x)))
-        
+
         TEMP          =          data.frame(id               = NA,
                                             structure        = gsub("FALSE ","",structure[!grepl("TRUE",structure)]),
-                                            post_date        = format(as.Date(as.POSIXct(meta.node$created_utc,origin="1970-01-01")),"%d-%m-%y"),
-                                            comm_date        = format(as.Date(as.POSIXct(unlist(lapply(main.node, function(x){GetAttribute(x,"created_utc")})),
-                                                                                         origin="1970-01-01")),"%d-%m-%y"),
+                                            post_date        = as.POSIXct(meta.node$created_utc,origin="1970-01-01"), 
+                                            comm_date        = as.POSIXct(unlist(lapply(main.node, function(x){GetAttribute(x, "created_utc")})), 
+                                                                          origin = "1970-01-01"),
                                             num_comments     = meta.node$num_comments,
                                             subreddit        = ifelse(is.null(meta.node$subreddit),"UNKNOWN",meta.node$subreddit),
                                             upvote_prop      = meta.node$upvote_ratio,
@@ -101,23 +101,23 @@ reddit_content = function(URL,wait_time=2){
                                             domain           = meta.node$domain,
                                             URL              = URL[i],
                                             stringsAsFactors = FALSE)
-        
+
         TEMP$id = 1:nrow(TEMP)
-        
+
         if(dim(TEMP)[1]>0 & dim(TEMP)[2]>0) data_extract = rbind(TEMP,data_extract)
         else print(paste("missed",i,":",URL[i]))
-        
+
       }
-      
+
     }
-    
+
     utils::setTxtProgressBar(pb, i)
-    
+
     Sys.sleep(min(2,wait_time))
   }
-  
+
   close(pb)
-  
+
   return(data_extract)
-  
+
 }
