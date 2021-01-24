@@ -4,9 +4,15 @@
 \alias{reddit_urls}
 \title{Returns relevant reddit URLs}
 \usage{
-reddit_urls(search_terms = NA, regex_filter = "", subreddit = NA,
-  cn_threshold = 0, page_threshold = 1, sort_by = "relevance",
-  wait_time = 2)
+reddit_urls(
+  search_terms = NA,
+  regex_filter = "",
+  subreddit = NA,
+  cn_threshold = 0,
+  page_threshold = 1,
+  sort_by = "relevance",
+  wait_time = 2
+)
 }
 \arguments{
 \item{search_terms}{A character string to be searched on Reddit.}

@@ -4,9 +4,15 @@
 \alias{get_reddit}
 \title{Get all data attributes from search query}
 \usage{
-get_reddit(search_terms = NA, regex_filter = "", subreddit = NA,
-  cn_threshold = 1, page_threshold = 1, sort_by = "comments",
-  wait_time = 2)
+get_reddit(
+  search_terms = NA,
+  regex_filter = "",
+  subreddit = NA,
+  cn_threshold = 1,
+  page_threshold = 1,
+  sort_by = "comments",
+  wait_time = 2
+)
 }
 \arguments{
 \item{search_terms}{A string of terms to be searched on Reddit.}

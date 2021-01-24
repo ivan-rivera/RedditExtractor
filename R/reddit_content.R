@@ -37,8 +37,8 @@ reddit_content = function(URL,wait_time=2){
   # setting up the data frame
   data_extract = data.frame(id               = numeric(),
                             structure        = character(),
-                            post_date        = as.Date(character()),
-                            comm_date        = as.Date(character()),
+                            post_date        = as.POSIXct(character()),
+                            comm_date        = as.POSIXct(character()),
                             num_comments     = numeric(),
                             subreddit        = character(),
                             upvote_prop      = numeric(),
@@ -83,9 +83,9 @@ reddit_content = function(URL,wait_time=2){
         
         TEMP          =          data.frame(id               = NA,
                                             structure        = gsub("FALSE ","",structure[!grepl("TRUE",structure)]),
-                                            post_date        = format(as.Date(as.POSIXct(meta.node$created_utc,origin="1970-01-01")),"%d-%m-%y"),
-                                            comm_date        = format(as.Date(as.POSIXct(unlist(lapply(main.node, function(x){GetAttribute(x,"created_utc")})),
-                                                                                         origin="1970-01-01")),"%d-%m-%y"),
+                                            post_date        = format(as.POSIXct(meta.node$created_utc,origin="1970-01-01")),
+                                            comm_date        = format(as.POSIXct(unlist(lapply(main.node, function(x){GetAttribute(x,"created_utc")})),
+                                                                                         origin="1970-01-01")),
                                             num_comments     = meta.node$num_comments,
                                             subreddit        = ifelse(is.null(meta.node$subreddit),"UNKNOWN",meta.node$subreddit),
                                             upvote_prop      = meta.node$upvote_ratio,

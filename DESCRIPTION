@@ -18,4 +18,4 @@ Author: Ivan Rivera <ivan.s.rivera@gmail.com>
 Maintainer: Ivan Rivera <ivan.s.rivera@gmail.com>
 Description: A collection of tools for extracting structured data from Reddit.
 License: GPL-3
-RoxygenNote: 6.0.1
+RoxygenNote: 7.1.1
