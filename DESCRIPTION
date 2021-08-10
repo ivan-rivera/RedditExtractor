@@ -1,7 +1,7 @@
 Package: RedditExtractoR
 Type: Package
 Title: Reddit Data Extraction Toolkit
-Version: 2.1.2
+Version: 2.1.5
 Imports:
     RJSONIO,
     utils,
@@ -13,9 +13,9 @@ Imports:
     visNetwork,
     rlang
 Depends: R (>= 3.2.0)
-Date: 2018-06-03
+Date: 2019-01-05
 Author: Ivan Rivera <ivan.s.rivera@gmail.com>
 Maintainer: Ivan Rivera <ivan.s.rivera@gmail.com>
-Description: A collection of tools for extracting structured data from Reddit.
+Description: A collection of tools for extracting structured data from <https://www.reddit.com/>.
 License: GPL-3
 RoxygenNote: 6.0.1
