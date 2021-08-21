@@ -4,5 +4,6 @@ RedditExtractoR.Rproj
 .RData
 .Ruserdata
 .DS_Store
+.idea/
 .tar.gz
 inst/doc

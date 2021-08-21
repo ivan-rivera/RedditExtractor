@@ -7,7 +7,7 @@
 get_thread_content(urls)
 }
 \arguments{
-\item{url}{A vector of strings pointing to a Reddit thread}
+\item{urls}{A vector of strings pointing to a Reddit thread}
 }
 \value{
 A list with 2 data frames "threads" and "comments"

@@ -6,7 +6,7 @@
 #'
 #' The URLs are being retained in both tables which would allow you to join them if needed
 #'
-#' @param url A vector of strings pointing to a Reddit thread
+#' @param urls A vector of strings pointing to a Reddit thread
 #' @return A list with 2 data frames "threads" and "comments"
 #' @export
 get_thread_content <- function(urls){

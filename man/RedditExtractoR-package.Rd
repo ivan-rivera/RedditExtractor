@@ -30,6 +30,3 @@ Maintainer: Ivan Rivera <ivan.s.rivera@gmail.com>
 \seealso{
 \url{www.reddit.com}
 }
-\examples{
-\dontrun{
-}
