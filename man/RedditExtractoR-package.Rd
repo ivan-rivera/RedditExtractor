@@ -12,7 +12,7 @@ Reddit is an online bulletin board and a social networking website where registe
 \tabular{ll}{
 Package: \tab RedditExtractoR\cr
 Type: \tab Package\cr
-Version: \tab 2.1.0\cr
+Version: \tab 3.0.0\cr
 Date: \tab 2015-06-14\cr
 License: \tab GPL-3 \cr
 }
@@ -31,8 +31,5 @@ Maintainer: Ivan Rivera <ivan.s.rivera@gmail.com>
 \url{www.reddit.com}
 }
 \examples{
-example_urls = reddit_urls(search_terms="science")
 \dontrun{
-example_attr = reddit_content(URL="reddit.com/r/gifs/comments/39tzsy/whale_watching")
-example_data = get_reddit(search_terms="economy")}
 }
