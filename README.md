@@ -1,6 +1,4 @@
-# RedditExtractoR
-
-<div style="text-align: center;"><img src="https://i.imgur.com/DtVMX2R.png" alt="logo"></div>
+<div style="text-align: center;"><img align="center" src="https://i.imgur.com/DtVMX2R.png" alt="logo"></div>
 
 ## Summary
 
