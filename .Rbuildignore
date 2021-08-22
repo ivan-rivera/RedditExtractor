@@ -4,3 +4,4 @@
 ^\.idea$
 ^cran-comments\.md$
 ^\.Rdata$
+^CRAN-RELEASE$
