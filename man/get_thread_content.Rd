@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_thread_content.R
 \name{get_thread_content}
 \alias{get_thread_content}
-\title{Get thread contents of Reddit URls}
+\title{Get thread contents of Reddit URLs}
 \usage{
 get_thread_content(urls)
 }

@@ -6,7 +6,7 @@
 Reddit Data Extraction Toolkit
 }
 \description{
-Reddit is an online bulletin board and a social networking website where registered users can submit and discuss content. This package uses Reddit API to retrieve comments together will all corresponding attributes from Reddit threads. Note that at this stage, the extraction produces a data frame with a flat structure, i.e. without preserving the order or heirarchy of individuals comments. This may be addressed in the next version of this package. Also note that due to API limitations, the number of comments available for retrieval is limited to 500 per thread.
+Reddit is an online bulletin board and a social networking website where registered users can submit and discuss content. This package uses Reddit API to retrieve thread URLs, comments, subreddits and user information. For more information about the usage of this package, please see the following GitHub page: https://github.com/ivan-rivera/RedditExtractor
 }
 \details{
 \tabular{ll}{

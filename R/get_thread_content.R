@@ -1,4 +1,4 @@
-#' Get thread contents of Reddit URls
+#' Get thread contents of Reddit URLs
 #'
 #' This function takes a collection of URLs and returns a list with 2 data frames:
 #' 1. a data frame containing meta data describing each thread
