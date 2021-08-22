@@ -1,2 +1,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^\.github$
+^\.idea$
+^cran-comments\.md$
+^\.Rdata$
+^CRAN-RELEASE$
