@@ -76,9 +76,6 @@ jobs:
           options(crayon.enabled = TRUE)
           rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")
         shell: Rscript {0}
-        
-      - name: Print check outputs
-        run: cat /github/workspace/RedditExtractoR.Rcheck/00check.log
 
       - name: Upload check results
         if: failure()
