@@ -23,9 +23,6 @@ Ivan Rivera
 
 Maintainer: Ivan Rivera <ivan.s.rivera@gmail.com>
 }
-\references{
-\url{https://www.reddit.com/dev/api}
-}
 \keyword{reddit}
 \seealso{
 \url{www.reddit.com}
