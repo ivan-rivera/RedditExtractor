@@ -25,5 +25,5 @@ Maintainer: Ivan Rivera <ivan.s.rivera@gmail.com>
 }
 \keyword{reddit}
 \seealso{
-\url{www.reddit.com}
+\url{https://www.reddit.com}
 }
