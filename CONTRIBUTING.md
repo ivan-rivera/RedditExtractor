@@ -1,0 +1,1 @@
+If you'd like to improve this package, there are several ways that you can help. First, if you spot a bug or if you'd like to propose a new feature, then please create an issue or upvote an existing one. If you'd like to implement a bugfix or a new feature, then please create a pull request.
