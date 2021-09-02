@@ -11,4 +11,4 @@ This package requires RJSONIO.
 
 # Comments
 
-Re-written the package entirely making it more readable and manageable.
+Fixed a bug concerning URL parsing + updated the `get_user_content` function.

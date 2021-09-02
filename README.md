@@ -82,8 +82,9 @@ Now you could technically feed these subreddits in a loop into the thread finder
 Lastly, let's suppose that you'd like to retrieve information about a particular user:
 
 ```r
-nat_geo_user <- get_user_content("nationalgeographic")
-str(nat_geo_user$about)
+user <- "nationalgeographic"
+nat_geo_user <- get_user_content(user)
+str(nat_geo_user[[user]]$about)
 # List of 7
 # $ created_utc  : chr "2017-08-24"
 # $ name         : chr "nationalgeographic"
@@ -92,7 +93,7 @@ str(nat_geo_user$about)
 # $ is_gold      : logi TRUE
 # $ thread_karma : num 279068
 # $ comment_karma: num 87406
-str(nat_geo_user$comments)
+str(nat_geo_user[[user]]$comments)
 # 'data.frame':	997 obs. of  11 variables:
 # $ url           : chr  "https://www.reddit.com/r/history/comments/anhdnl/im_historian_author_and_musician_mark_lee_gardner/" "https://www.reddit.com/r/history/comments/anhdnl/im_historian_author_and_musician_mark_lee_gardner/" "https://www.reddit.com/r/history/comments/anhdnl/im_historian_author_and_musician_mark_lee_gardner/" "https://www.reddit.com/r/history/comments/anhdnl/im_historian_author_and_musician_mark_lee_gardner/" ...
 # $ date_utc      : chr  "2019-02-05" "2019-02-05" "2019-02-05" "2019-02-05" ...
@@ -105,7 +106,7 @@ str(nat_geo_user$comments)
 # $ up            : num  2 2 9 4 8 6 6 10 13 2 ...
 # $ downs         : num  0 0 0 0 0 0 0 0 0 0 ...
 # $ golds         : num  0 0 0 0 0 0 0 0 0 0 ...
-str(nat_geo_user$threads)
+str(nat_geo_user[[user]]$threads)
 # 'data.frame':	999 obs. of  10 variables:
 # $ url      : chr  "https://www.nationalgeographic.com/environment/2019/02/2018-fourth-warmest-year-ever-noaa-nasa-reports/?cmpid=o"| __truncated__ "https://www.reddit.com/r/history/comments/anhdnl/im_historian_author_and_musician_mark_lee_gardner/" "https://www.nationalgeographic.com/environment/2019/02/climate-change-alters-oceans-blues-greens/" "https://v.redd.it/ehqa55sbcge21" ...
 # $ date_utc : chr  "2019-02-06" "2019-02-05" "2019-02-05" "2019-02-04" ...
@@ -118,6 +119,8 @@ str(nat_geo_user$threads)
 # $ ups      : num  303 62 165 97 6406 ...
 # $ downs    : num  0 0 0 0 0 0 0 0 0 0 ...
 ```
+
+Note that the above function also works for a vector of usernames, so you could use it as: `get_user_content(c("memes","nationalgeographic"))`
 
 That's all there is to it!
 
