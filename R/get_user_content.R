@@ -1,16 +1,21 @@
-#' Find data relating to a Reddit user
+#' Find data relating to a vector of Reddit users
 #'
-#' Given a valid Reddit user name, obtain a list consisting of
-#' general information about the user, their comments and threads
+#' Given a list of valid Reddit user names, obtain a list consisting of
+#' general information about each user, their comments and threads
 #'
-#' @param user A string representing a valid Reddit user name
-#' @return A list with "about" (list), "comments" (data frame) and "threads" (data frame)
+#' @param users A vector of strings representing valid Reddit user names
+#' @return A nested list with user names containing another list that has
+#' "about" (list), "comments" (data frame) and "threads" (data frame)
 #' @examples
 #' \dontrun{
-#' get_user_content("memes")
+#' get_user_content(c("memes", "nationalgeographic"))
 #' }
 #' @export
-get_user_content <- function(user) {
+get_user_content <- function(users) sapply(users, get_single_user_content, simplify=FALSE, USE.NAMES=TRUE)
+
+# Get info about an individual user
+get_single_user_content <- function(user) {
+  cat(sprintf("parsing user %s...\n", user))
   user_posts <- build_user_search_url(user) |> parse_request_url(data_builder = user_data_builder)
   list(
     about = build_user_info_url(user) |> url_to_json() |> build_user_info_list(),

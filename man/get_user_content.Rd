@@ -2,22 +2,23 @@
 % Please edit documentation in R/get_user_content.R
 \name{get_user_content}
 \alias{get_user_content}
-\title{Find data relating to a Reddit user}
+\title{Find data relating to a vector of Reddit users}
 \usage{
-get_user_content(user)
+get_user_content(users)
 }
 \arguments{
-\item{user}{A string representing a valid Reddit user name}
+\item{users}{A vector of strings representing valid Reddit user names}
 }
 \value{
-A list with "about" (list), "comments" (data frame) and "threads" (data frame)
+A nested list with user names containing another list that has
+"about" (list), "comments" (data frame) and "threads" (data frame)
 }
 \description{
-Given a valid Reddit user name, obtain a list consisting of
-general information about the user, their comments and threads
+Given a list of valid Reddit user names, obtain a list consisting of
+general information about each user, their comments and threads
 }
 \examples{
 \dontrun{
-get_user_content("memes")
+get_user_content(c("memes", "nationalgeographic"))
 }
 }
