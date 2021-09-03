@@ -7,4 +7,5 @@
 ^CRAN-RELEASE$
 ^CODE_OF_CONDUCT\.md$
 ^CONTRIBUTING\.md$
+^LICENSE$
 ^pull_request_template\.md$
