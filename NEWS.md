@@ -1,5 +1,9 @@
 # RedditExtractor
 
+## Version 3.0.4
+
+* Added self-text into the data frame with thread URLs
+
 ## Version 3.0.3
 
 * Updated the `get_user_content` method so that it can now accept a vector of users
