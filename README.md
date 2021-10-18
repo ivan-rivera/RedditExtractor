@@ -1,3 +1,7 @@
+<!-- badges: start -->
+  [![R-CMD-check](https://github.com/ivan-rivera/RedditExtracor/workflows/R-CMD-check/badge.svg)](https://github.com/ivan-rivera/RedditExtracor/actions)
+  <!-- badges: end -->
+  
 <div style="text-align: center; width: 100%"><img align="center" src="https://i.imgur.com/DtVMX2R.png" alt="logo"></div>
 
 ## Summary
