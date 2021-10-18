@@ -11,4 +11,4 @@ This package requires RJSONIO.
 
 # Comments
 
-Updated date
+License update
