@@ -7,11 +7,11 @@ Imports:
     utils,
     rlang
 Depends: R (>= 4.1.0)
-Date: 2021-08-31
+Date: 2021-10-18
 Author: Ivan Rivera <ivan.s.rivera@gmail.com>
 Maintainer: Ivan Rivera <ivan.s.rivera@gmail.com>
 Description: A collection of tools for extracting structured data from <https://www.reddit.com/>.
-License: GPL-3
+License: GPL-3s
 RoxygenNote: 7.1.1
 Suggests:
     rmarkdown,
