@@ -40,6 +40,7 @@ build_thread_df <- function(json) {
   data.frame(
     date_utc = extract_json_attribute(json, "created_utc") |> timestamp_to_date(),
     title = extract_json_attribute(json, "title"),
+    text = extract_json_attribute(json, "selftext"),
     subreddit = extract_json_attribute(json, "subreddit"),
     comments = extract_json_attribute(json, "num_comments"),
     url = REDDIT_URL %+% extract_json_attribute(json, "permalink"),
