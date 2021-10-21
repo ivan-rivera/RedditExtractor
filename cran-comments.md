@@ -11,4 +11,4 @@ This package requires RJSONIO.
 
 # Comments
 
-License update
+Fixed a small bug
