@@ -20,18 +20,18 @@ parse_request_url <- function(request_url, data_builder, after = NA, data_list =
 }
 
 
-# Parse a thread URL
 parse_thread_url <- function(request_url){
   json <- url_to_json(request_url %+% ".json?limit=500")
-  thread_json <- get_thread_json(json)
-  comments_json <- if(thread_json$num_comments > 0) get_comment_json(json) else NA
-  comments_exist <- !is.na(comments_json) && length(comments_json) > 0
+  comments_exist <- length(get_comment_json(json)) > 0
   list(
-    thread = build_thread_content_df(thread_json, request_url),
-    comments = if(comments_exist) build_comments_content_df(comments_json, request_url) else NA
+    thread = json |>
+      get_thread_json() |>
+      build_thread_content_df(request_url),
+    comments = if(comments_exist) json |>
+      get_comment_json() |>
+      build_comments_content_df(request_url) else NA
   )
 }
-
 
 # Apply a builder function to data if it contains elements
 maybe_build <- function(data, builder) {
