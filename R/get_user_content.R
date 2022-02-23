@@ -78,6 +78,7 @@ build_user_comment_df <- function(json) {
   data.frame(
     url = extract_json_attribute(json, "link_permalink"),
     date_utc = extract_json_attribute(json, "created_utc") |> timestamp_to_date(),
+    time_stamp = extract_json_attribute(json, "created_utc"),
     subreddit = extract_json_attribute(json, "subreddit"),
     thread_author = extract_json_attribute(json, "link_author"),
     comment_author = extract_json_attribute(json, "author"),
