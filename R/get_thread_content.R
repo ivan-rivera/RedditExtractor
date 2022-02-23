@@ -23,6 +23,7 @@ build_thread_content_df <- function(json, request_url) data.frame(
   url = strip_json(request_url),
   author = json$author,
   date = timestamp_to_date(json$created_utc),
+  time_stamp = json$created_utc,
   title = json$title,
   text = json$selftext,
   subreddit = json$subreddit,
