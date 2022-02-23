@@ -7,7 +7,7 @@ test_that("a regular user can be parsed correctly", {
   )[[1]]
   expect_equal(names(results), c("comments", "threads"))
   expect_equal(results$comments, NA)
-  expect_equal(ncol(results$threads), 10)
+  expect_equal(ncol(results$threads), 11)
 })
 
 
