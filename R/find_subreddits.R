@@ -20,6 +20,7 @@ build_subreddit_df <- function(json) {
   data.frame(
     id = extract_json_attribute(json, "id"),
     date_utc = extract_json_attribute(json, "created_utc") |> timestamp_to_date(),
+    timestamp = extract_json_attribute(json, "created_utc"),
     subreddit = extract_json_attribute(json, "display_name"),
     title = extract_json_attribute(json, "title"),
     description = extract_json_attribute(json, "public_description"),
