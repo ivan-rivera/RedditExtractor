@@ -44,6 +44,7 @@ build_comments_content_df <- function(json, request_url) data.frame(
   url = strip_json(request_url),
   author = extract_comments_attributes(json, "author"),
   date = extract_comments_attributes(json, "created_utc") |> timestamp_to_date(),
+  time_stamp = extract_comments_attributes(json, "created_utc"),
   score = extract_comments_attributes(json, "score"),
   upvotes = extract_comments_attributes(json, "ups"),
   downvotes = extract_comments_attributes(json, "downs"),
