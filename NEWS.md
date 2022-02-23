@@ -1,5 +1,9 @@
 # RedditExtractor
 
+## Version 3.0.6
+
+Added timestamps to extracted comments and threads
+
 ## Version 3.0.5
 
 Fixed a bug in comment extraction which occurred when a thread would report more than zero comments even none were present
