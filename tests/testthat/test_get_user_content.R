@@ -15,5 +15,5 @@ test_that("about user info works", {
   about_user_json |>
     build_user_info_list() |>
     length() |>
-    expect_equal(7)
+    expect_equal(8)
 })

@@ -44,6 +44,7 @@ user_data_builder <- function(json) list(
 # Build user info list
 build_user_info_list <- function(json) list(
   created_utc = json$data$created_utc |> timestamp_to_date(),
+  time_stamp = json$data$created_utc,
   name = json$data$name,
   is_employee = json$data$is_employee,
   is_mod = json$data$is_mod,
