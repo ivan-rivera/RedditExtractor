@@ -7,7 +7,7 @@ Imports:
     utils,
     rlang
 Depends: R (>= 4.1.0)
-Date: 2021-10-21
+Date: 2022-03-02
 Author: Ivan Rivera <ivan.s.rivera@gmail.com>
 Maintainer: Ivan Rivera <ivan.s.rivera@gmail.com>
 Description: A collection of tools for extracting structured data from <https://www.reddit.com/>.
