@@ -44,6 +44,7 @@ user_data_builder <- function(json) list(
 # Build user info list
 build_user_info_list <- function(json) list(
   created_utc = json$data$created_utc |> timestamp_to_date(),
+  timestamp = json$data$created_utc,
   name = json$data$name,
   is_employee = json$data$is_employee,
   is_mod = json$data$is_mod,
@@ -58,6 +59,7 @@ build_user_thread_df <- function(json) {
   data.frame(
     url = extract_json_attribute(json, "url"),
     date_utc = extract_json_attribute(json, "created_utc") |> timestamp_to_date(),
+    timestamp = extract_json_attribute(json, "created_utc"),
     subreddit = extract_json_attribute(json, "subreddit"),
     author = extract_json_attribute(json, "author"),
     title = extract_json_attribute(json, "title"),
@@ -76,6 +78,7 @@ build_user_comment_df <- function(json) {
   data.frame(
     url = extract_json_attribute(json, "link_permalink"),
     date_utc = extract_json_attribute(json, "created_utc") |> timestamp_to_date(),
+    timestamp = extract_json_attribute(json, "created_utc"),
     subreddit = extract_json_attribute(json, "subreddit"),
     thread_author = extract_json_attribute(json, "link_author"),
     comment_author = extract_json_attribute(json, "author"),

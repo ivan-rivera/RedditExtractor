@@ -39,6 +39,7 @@ find_thread_urls <- function(keywords=NA, sort_by="top", subreddit=NA, period="m
 build_thread_df <- function(json) {
   data.frame(
     date_utc = extract_json_attribute(json, "created_utc") |> timestamp_to_date(),
+    timestamp = extract_json_attribute(json, "created_utc"),
     title = extract_json_attribute(json, "title"),
     text = extract_json_attribute(json, "selftext"),
     subreddit = extract_json_attribute(json, "subreddit"),

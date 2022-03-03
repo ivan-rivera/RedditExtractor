@@ -1,6 +1,6 @@
 ## Test environments
 
-* Local OSX Big Sur 11.5.1, R 4.1.0
+* Local Windows 10 Pro 19044.1526, R 4.1.2
 
 ## R CMD check results
 There were no ERRORs, WARNINGs or NOTEs. 
@@ -11,4 +11,4 @@ This package requires RJSONIO.
 
 # Comments
 
-Fixed a small bug
+Added timestamps to the extracted comment and thread info
