@@ -1,7 +1,7 @@
 Package: RedditExtractoR
 Type: Package
 Title: Reddit Data Extraction Toolkit
-Version: 3.0.6
+Version: 3.0.7
 Imports:
     RJSONIO,
     utils,

@@ -4,4 +4,7 @@ url_to_json <- function(url) url |>
   utils::URLencode() |>
   readLines(warn = FALSE) |>
   RJSONIO::fromJSON() |>
-  tryCatch(error = function(e) stop("Cannot read from Reddit, check your inputs or internet connection"))
+  tryCatch(error = function(e) {
+    warning(e)
+    return(list())
+  })

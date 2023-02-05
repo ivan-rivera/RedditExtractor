@@ -1,5 +1,9 @@
 # RedditExtractor
 
+## Version 3.0.7
+
+`get_thread_content` can now handle errors without interrupting parsing
+
 ## Version 3.0.6
 
 Added timestamps to extracted comments and threads
