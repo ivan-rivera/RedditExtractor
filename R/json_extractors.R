@@ -28,7 +28,7 @@ get_replies_or_null <- function(element) {
 
 
 # Get the children component from JSON
-get_children <- function(json) json[[2]]$children
+get_children <- function(json) if(length(json)) json[[2]]$children else NULL
 
 
 # Extract thread content out of a json structure

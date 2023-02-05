@@ -22,6 +22,7 @@ parse_request_url <- function(request_url, data_builder, after = NA, data_list =
 
 parse_thread_url <- function(request_url){
   json <- url_to_json(request_url %+% ".json?limit=500")
+  if(!length(json)) return(list(thread=list()))
   comments_exist <- length(get_comment_json(json)) > 0
   list(
     thread = json |>
