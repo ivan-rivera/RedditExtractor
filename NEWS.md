@@ -1,4 +1,7 @@
 # RedditExtractor
+## Version 3.0.8
+
+`get_user_content` had a bug which would stop iterating through data if it encountered a user with no comments. Fixed it
 
 ## Version 3.0.7
 

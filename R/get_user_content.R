@@ -17,11 +17,14 @@ get_user_content <- function(users) sapply(users, get_single_user_content, simpl
 get_single_user_content <- function(user) {
   cat(sprintf("parsing user %s...\n", user))
   user_posts <- build_user_search_url(user) |> parse_request_url(data_builder = user_data_builder)
-  list(
-    about = build_user_info_url(user) |> url_to_json() |> build_user_info_list(),
-    comments = concat_posts(user_posts, "comments"),
-    threads = concat_posts(user_posts, "threads")
-  )
+  if(all(is.na(user_posts))) list(about=NA, comments=NA, threads=NA)
+  else {
+    list(
+      about = build_user_info_url(user) |> url_to_json() |> build_user_info_list(),
+      comments = concat_posts(user_posts, "comments"),
+      threads = concat_posts(user_posts, "threads")
+    ) 
+  }
 }
 
 
