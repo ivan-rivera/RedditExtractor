@@ -1,4 +1,9 @@
 # RedditExtractor
+
+## Version 3.0.9
+
+Version 3.0.8 did not fully fix the `get_user_content` problem, it should be fixed in this version
+
 ## Version 3.0.8
 
 `get_user_content` had a bug which would stop iterating through data if it encountered a user with no comments. Fixed it

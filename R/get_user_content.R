@@ -27,13 +27,23 @@ get_single_user_content <- function(user) {
   }
 }
 
+# Exclude NAs from user content list
+filter_posts <- function(posts) {
+  posts[sapply(posts, function(x) !all(is.na(x)))]
+}
+
 
 # Concatenate nested pages of the same content type
 concat_posts <- function(posts, content_type){
-  lapply(posts, function(page) page[[content_type]]) |>
-    remove_na() |>
-    rbind_list() |>
-    dedup_df()
+  filtered_posts <- posts |> filter_posts()
+  if(length(filtered_posts) == 0) NA
+  else {
+    filtered_posts |>
+      lapply(function(page) page[[content_type]]) |>
+      remove_na() |>
+      rbind_list() |>
+      dedup_df() 
+  }
 }
 
 
