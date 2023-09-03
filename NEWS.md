@@ -1,5 +1,9 @@
 # RedditExtractor
 
+## Version 3.0.10
+
+Updated package metadata
+
 ## Version 3.0.9
 
 Version 3.0.8 did not fully fix the `get_user_content` problem, it should be fixed in this version

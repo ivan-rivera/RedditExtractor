@@ -2,6 +2,7 @@
 \alias{RedditExtractoR}
 \alias{RedditExtractoR}
 \docType{package}
+\alias{RedditExtractoR-package}
 \title{
 Reddit Data Extraction Toolkit
 }
@@ -12,7 +13,7 @@ Reddit is an online bulletin board and a social networking website where registe
 \tabular{ll}{
 Package: \tab RedditExtractoR\cr
 Type: \tab Package\cr
-Version: \tab 3.0.0\cr
+Version: \tab 3.0.10\cr
 Date: \tab 2015-06-14\cr
 License: \tab GPL-3 \cr
 }
